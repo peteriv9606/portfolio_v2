@@ -1,3 +1,7 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/f226a9b3-26d3-458d-89b1-567d64f82cb9/deploy-status)](https://app.netlify.com/sites/pivanov-portfolio/deploys)
+
+View the [live website here](https://pivanov-portfolio.netlify.app/)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
