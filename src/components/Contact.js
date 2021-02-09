@@ -88,92 +88,92 @@ function Contact() {
         <div id="header" className="font-italic col-12 text-center py-4">
           Always feels good to get in touch
         </div>
-      </Container>
 
-      <Container className="bg-light shadow-lg rounded my-5 p-5 d-flex flex-wrap">
-        <Container
-          fluid
-          className="col-12 col-lg-6  py-5 px-5 "
-          id="contactAndAlt"
-        >
-          <Row className="d-block text-center text-secondary">
-            <div id="subHeader">Drop me an email</div>
-          </Row>
-          <Form onSubmit={handleSubmit}>
-            <Row>
-              <Col className="col-12 col-lg-6 my-2">
-                <Form.Control
-                  type="input"
-                  name="name"
-                  value={data.name}
-                  placeholder="Full Name"
-                  onChange={handleType}
-                />
-              </Col>
-              <Col className="col-12 col-lg-6 my-2">
-                <Form.Control
-                  type="input"
-                  name="email"
-                  value={data.email}
-                  placeholder="Email Address"
-                  onChange={handleType}
-                />
-              </Col>
-              <Col className="col-12 my-2">
-                <Form.Control
-                  type="input"
-                  name="message"
-                  value={data.message}
-                  as="textarea"
-                  rows={3}
-                  placeholder="Message for me"
-                  onChange={handleType}
-                />
-              </Col>
-              <Col className="col-12 d-block text-center">
-                <p id="errMsg" className="m-auto p-1 d-block" ref={el}>
-                  {errMsg}
-                </p>
-                <Button
-                  className="btn btn-success w-100"
-                  type="submit"
-                  onClick={() => handleShow}
-                >
-                  Send
-                </Button>
-              </Col>
-            </Row>
-          </Form>
-        </Container>
-        <Container
-          id="contactAndAlt"
-          fluid
-          className="col-12 col-lg-6  py-5 px-5"
-        >
-          <Container fluid className="col-12">
+        <Container className="bg-light shadow-lg rounded my-5 p-5 d-flex flex-wrap">
+          <Container
+            fluid
+            className="col-12 col-lg-6  py-5 px-5 "
+            id="contactAndAlt"
+          >
             <Row className="d-block text-center text-secondary">
-              <div id="subHeader">Or use the alternatives</div>
+              <div id="subHeader">Drop me an email</div>
             </Row>
-            <Container
-              fluid
-              className="d-flex flex-wrap justify-content-around"
-            >
-              {socialData.map((item) => {
-                return (
-                  <a
-                    href={item.link}
-                    key={item.id}
-                    target="_blank"
-                    rel="noreferrer"
+            <Form onSubmit={handleSubmit}>
+              <Row>
+                <Col className="col-12 col-lg-6 my-2">
+                  <Form.Control
+                    type="input"
+                    name="name"
+                    value={data.name}
+                    placeholder="Full Name"
+                    onChange={handleType}
+                  />
+                </Col>
+                <Col className="col-12 col-lg-6 my-2">
+                  <Form.Control
+                    type="input"
+                    name="email"
+                    value={data.email}
+                    placeholder="Email Address"
+                    onChange={handleType}
+                  />
+                </Col>
+                <Col className="col-12 my-2">
+                  <Form.Control
+                    type="input"
+                    name="message"
+                    value={data.message}
+                    as="textarea"
+                    rows={3}
+                    placeholder="Message for me"
+                    onChange={handleType}
+                  />
+                </Col>
+                <Col className="col-12 d-block text-center">
+                  <p id="errMsg" className="m-auto p-1 d-block" ref={el}>
+                    {errMsg}
+                  </p>
+                  <Button
+                    className="btn btn-success w-100"
+                    type="submit"
+                    onClick={() => handleShow}
                   >
-                    <Image
-                      src={item.imgLink}
-                      style={{ width: "40px", cursor: "pointer" }}
-                      className="m-2 rounded"
-                    />
-                  </a>
-                );
-              })}
+                    Send
+                  </Button>
+                </Col>
+              </Row>
+            </Form>
+          </Container>
+          <Container
+            id="contactAndAlt"
+            fluid
+            className="col-12 col-lg-6  py-5 px-5"
+          >
+            <Container fluid className="col-12">
+              <Row className="d-block text-center text-secondary">
+                <div id="subHeader">Or use the alternatives</div>
+              </Row>
+              <Container
+                fluid
+                className="d-flex flex-wrap justify-content-around"
+              >
+                {socialData.map((item) => {
+                  return (
+                    <a
+                      href={item.link}
+                      key={item.id}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <Image
+                        src={item.imgLink}
+                        style={{ width: "40px", cursor: "pointer" }}
+                        className="m-2 rounded"
+                      />
+                    </a>
+                  );
+                })}
+              </Container>
             </Container>
           </Container>
         </Container>
