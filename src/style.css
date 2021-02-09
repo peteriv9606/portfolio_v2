@@ -1,0 +1,336 @@
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap");
+
+/* 
+Extra small devices (portrait phones, less than 544px) 
+No media query since this is the default in Bootstrap because it is "mobile first"
+*/
+body {
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+  font-family: "JetBrains Mono", monospace;
+  background-color: #f7f7f7;
+}
+
+#sectionTitle {
+  font-size: xx-large;
+}
+#header {
+  font-size: x-large;
+}
+#subHeader {
+  font-size: large;
+}
+#description {
+  font-size: medium;
+}
+
+/*
+####################################################
+Navigation
+####################################################
+*/
+
+#logoImg {
+  height: 40px;
+  cursor: pointer;
+  -webkit-animation: spin 10s linear infinite;
+  -moz-animation: spin 10s linear infinite;
+  animation: spin 10s linear infinite;
+}
+#logoImg:active {
+  -webkit-animation: pulse 0.2s linear;
+  -moz-animation: pulse 0.2s linear;
+  animation: pulse 0.2s linear;
+}
+
+#responsive-navbar-nav > div > a {
+  cursor: pointer;
+}
+/*
+####################################################
+Home
+####################################################
+*/
+
+#home {
+  height: calc(100vh - 65px);
+}
+/*
+####################################################
+Project
+####################################################
+*/
+#projectImg {
+  max-width: 400px;
+}
+
+/*
+####################################################
+Skill
+####################################################
+*/
+.tilty {
+  display: inline-flex;
+  width: 90px;
+  height: 90px;
+  background-size: 75px;
+  margin: 5px;
+  border-radius: 20px;
+  transform-style: preserve-3d;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.inner-element {
+  display: flex;
+  color: white;
+  opacity: 0;
+  transition: 0.4s;
+  background: radial-gradient(
+    circle,
+    rgba(0, 0, 0, 0.5970763305322129) 0%,
+    rgba(247, 247, 247, 0) 63%
+  );
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  margin: auto;
+  transform-style: preserve-3d;
+  transform: translateZ(30px);
+}
+.inner-element.active {
+  opacity: 1;
+}
+.inner-element div {
+  display: block;
+  font-size: 14px;
+  font-style: italic;
+}
+#mobileSkillImg {
+  display: inline-flex;
+  width: 100px;
+  height: 100px;
+  background-size: 75px;
+  border-radius: 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+#mobileSkillInnerElement {
+  color: white;
+  display: flex;
+  opacity: 0;
+  transition: 0.4s;
+  background: radial-gradient(
+    circle,
+    rgba(0, 0, 0, 0.5970763305322129) 0%,
+    rgba(247, 247, 247, 0) 63%
+  );
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  margin: auto;
+}
+#mobileSkillInnerElement.active {
+  opacity: 1;
+  transition: 0.4s;
+}
+
+/*
+####################################################
+About
+####################################################
+*/
+
+/*
+####################################################
+Contact
+####################################################
+*/
+#errMsg {
+  visibility: hidden;
+  color: red;
+  transition: 0.4s;
+}
+
+/*
+####################################################
+M E D I A  Q U E R I E S
+####################################################
+*/
+@media (max-width: 543px) {
+  #sectionTitle {
+    font-size: x-large;
+  }
+  #header {
+    font-size: large;
+  }
+  #subHeader {
+    font-size: medium;
+  }
+  #description {
+    font-size: small;
+  }
+  #projectImg {
+    max-width: 500px;
+  }
+  #aboutContainer {
+    padding: 20px 0px !important;
+  }
+  #contactAndAlt {
+    padding: 0.5rem !important;
+  }
+}
+/*
+::::::::::::::::::::::::::::::::::::::::::::::::::::
+Bootstrap 4 breakpoints
+*/
+/* Small devices (landscape phones, 544px and up) */
+@media (min-width: 544px) {
+  #sectionTitle {
+    font-size: x-large;
+  }
+  #header {
+    font-size: larger;
+  }
+  #subHeader {
+    font-size: large;
+  }
+  #description {
+    font-size: medium;
+  }
+  #projectImg {
+    max-width: 500px;
+  }
+
+  .tilty {
+    width: 100px;
+    height: 100px;
+    background-size: 85px;
+    margin: 5px;
+  }
+  .inner-element div {
+    font-size: 16px;
+  }
+
+  #contactAndAlt {
+    padding: 3rem !important;
+  }
+}
+
+/* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
+@media (min-width: 768px) {
+  #sectionTitle {
+    font-size: xx-large;
+  }
+  #header {
+    font-size: x-large;
+  }
+  #subHeader {
+    font-size: larger;
+  }
+  #description {
+    font-size: large;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  #responsive-navbar-nav > div > a {
+    cursor: pointer;
+    transition: 0.4s;
+  }
+  #responsive-navbar-nav > div > a:hover {
+    color: #61dbfb;
+    transition: 0.4s;
+  }
+  .active {
+    color: #61dbfb !important;
+    -webkit-animation: pulse 2s linear infinite;
+    -moz-animation: pulse 2s linear infinite;
+    animation: pulse 2s linear infinite;
+  }
+  .tilty {
+    width: 120px;
+    height: 120px;
+    background-size: 95px;
+    margin: 5px;
+  }
+  .inner-element div {
+    font-size: 20px;
+  }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+}
+
+/*
+::::::::::::::::::::::::::::::::::::::::::::::::::::
+Custom media queries
+*/
+
+/*Animation*/
+@-moz-keyframes spin {
+  100% {
+    -moz-transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@-moz-keyframes pulse {
+  0% {
+    -moz-transform: scale(1);
+  }
+  50% {
+    -moz-transform: scale(0.9);
+  }
+  100% {
+    -moz-transform: scale(1);
+  }
+}
+@-webkit-keyframes pulse {
+  0% {
+    -webkit-transform: scale(1);
+  }
+  50% {
+    -webkit-transform: scale(0.9);
+  }
+  100% {
+    -webkit-transform: scale(1);
+  }
+}
+@keyframes pulse {
+  0% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+  25% {
+    -webkit-transform: scale(0.95);
+    transform: scale(0.95);
+  }
+  50% {
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+  75% {
+    -webkit-transform: scale(0.95);
+    transform: scale(0.95);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
