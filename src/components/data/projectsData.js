@@ -22,7 +22,7 @@ export const projectsData = [
     header: "This website",
     description:
       "My main portfolio website made using React + React-Bootstrap with NodeJS (npm)",
-    githubLink: "https://github.com/peteriv9606/portfolio-v2.0",
+    githubLink: "https://github.com/peteriv9606/portfolio-v2",
     liveLink: "#",
     imgLink: "../images/thisWebSite.png",
   },
