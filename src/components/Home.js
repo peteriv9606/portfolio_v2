@@ -23,7 +23,7 @@ function Home() {
           <span style={{ color: "#CE9178" }}>"Petar Ivanov"</span>
           <br></br>
           <span style={{ color: "#4FC1FF" }}>
-            <span style={{ color: "#569CD6" }}>var</span> role
+            <span style={{ color: "#569CD6" }}>let</span> role
           </span>
           <span style={{ color: "white" }}> = </span>
           <span style={{ color: "#CE9178" }}>"Web Developer Enthusiast"</span>
