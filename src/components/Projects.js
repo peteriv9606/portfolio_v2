@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { Container, Button, Row, Modal } from "react-bootstrap";
+import { Container, Button, Modal } from "react-bootstrap";
 
 import { projectsData } from "./data/projectsData";
 import Project from "./Project";
@@ -9,7 +9,7 @@ function Projects() {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  //const handleShow = () => setShow(true);
 
   return (
     <section id="projects" className="text-secondary py-3">
