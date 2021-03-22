@@ -8,8 +8,8 @@ function About() {
   const [size, setSize] = useState("");
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const handleSmaller = (e) => {
-    window.open(cvPDF, "Petar Ivanov DEV CV");
+  const handleSmaller = () => {
+    window.open(cvPDF, "_blank");
   };
   useEffect(() => {
     function resizeHandler() {
