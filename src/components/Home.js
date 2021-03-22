@@ -1,10 +1,24 @@
 import React from "react";
 import { Container } from "react-bootstrap";
+import logo from "../photoofme.jpg";
 
 function Home() {
   return (
-    <section id="home" className="text-light bg-dark py-3">
-      <Container className="col-12 text-center">
+    <section id="home">
+      <div className="shapedBg d-flex align-items-center justify-content-center">
+        <Container className="shapedContent bg-light rounded shadow-lg h-50 col-8 p-0 m-0">
+          <Container
+            fluid
+            className="SideTriangleShape h-100 d-flex flex-wrap justify-content-center p-0 m-0"
+          >
+            <Container className="text-dark text-center align-self-center">
+              <h1>Petar Ivanov</h1>
+              <h4>Web Developer Enthusiast</h4>
+            </Container>
+          </Container>
+        </Container>
+      </div>
+      {/* <Container className="col-12 text-center">
         <div id="sectionTitle">
           <span style={{ color: "#FF1493" }}>Hello </span>
           <span style={{ color: "#bfff00" }}>World!</span>
@@ -28,7 +42,7 @@ function Home() {
           <span style={{ color: "white" }}> = </span>
           <span style={{ color: "#CE9178" }}>"Web Developer Enthusiast"</span>
         </Container>
-      </Container>
+      </Container> */}
     </section>
   );
 }

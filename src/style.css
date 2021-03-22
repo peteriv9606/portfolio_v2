@@ -10,7 +10,6 @@ body {
   -ms-user-select: none; /* IE10+/Edge */
   user-select: none; /* Standard */
   font-family: "JetBrains Mono", monospace;
-  background-color: #f7f7f7;
 }
 
 #sectionTitle {
@@ -57,6 +56,39 @@ Home
 #home {
   height: calc(100vh - 65px);
 }
+
+/*
+################### CARD SHAPES ####################
+*/
+
+.shapedBg {
+  background: rgb(221, 27, 22);
+  background: linear-gradient(
+    45deg,
+    rgba(221, 27, 22, 1) 20%,
+    rgba(97, 219, 251, 1) 80%
+  );
+  transform: skewY(-30deg);
+  width: -webkit-fill-available;
+  height: inherit;
+  z-index: -10;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.shapedContent {
+  transform: skewY(30deg);
+  font-family: "Lato", sans-serif;
+}
+
+.SideTriangleShape {
+  border: 5vh solid transparent;
+  border-left: 2rem solid rgba(97, 219, 251, 1);
+  border-right: 2rem solid rgba(221, 27, 22, 1);
+  border-radius: 5px;
+}
+
 /*
 ####################################################
 Project
@@ -64,6 +96,9 @@ Project
 */
 #projectImg {
   max-width: 400px;
+}
+#projects {
+  background-color: #f7f7f7;
 }
 
 /*

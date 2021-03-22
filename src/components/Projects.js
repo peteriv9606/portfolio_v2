@@ -28,11 +28,11 @@ function Projects() {
             })}
           </Container>
         </Container>
-        <Row className="d-flex justify-content-center p-3">
+        {/*  <Row className="d-flex justify-content-center p-3">
           <Button className="btn btn-info" onClick={handleShow}>
             View All Projects
           </Button>
-        </Row>
+        </Row> */}
       </Container>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
