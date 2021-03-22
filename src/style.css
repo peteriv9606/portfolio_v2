@@ -47,6 +47,14 @@ Navigation
 #responsive-navbar-nav > div > a {
   cursor: pointer;
 }
+#navigationBar {
+  opacity: 0.5;
+  transition: 10s;
+}
+#navigationBar:hover {
+  opacity: 1;
+  transition: 0.4s;
+}
 /*
 ####################################################
 Home
@@ -178,7 +186,14 @@ Skill
 About
 ####################################################
 */
+.modal-content {
+  width: fit-content;
+}
 
+.cvFrame {
+  width: 50vw;
+  height: calc(100vh - 200px);
+}
 /*
 ####################################################
 Contact

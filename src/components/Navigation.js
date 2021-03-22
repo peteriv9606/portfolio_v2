@@ -37,8 +37,8 @@ function Navigation() {
       <Navbar
         collapseOnSelect
         className="shadow"
-        variant="dark"
-        bg="dark"
+        variant="light"
+        bg="light"
         expand="lg"
         sticky="top"
         id="navigationBar"

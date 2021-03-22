@@ -1,11 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Button, Modal } from "react-bootstrap";
+import { BiLinkExternal, BiDownload } from "react-icons/bi";
+import cvPDF from "./data/CV.pdf";
 
 function About() {
   const [show, setShow] = useState(false);
-
+  const [size, setSize] = useState("");
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const handleSmaller = (e) => {
+    window.open(cvPDF, "Petar Ivanov DEV CV");
+  };
+  useEffect(() => {
+    function resizeHandler() {
+      setSize(window.outerWidth);
+    }
+    window.addEventListener("resize", resizeHandler);
+    resizeHandler();
+
+    return () => {
+      window.removeEventListener("resize", resizeHandler);
+    };
+  }, [size]);
 
   return (
     <section id="about" className="text-secondary py-3">
@@ -54,31 +70,39 @@ function About() {
                 <Button
                   id="cvBtn"
                   className="btn btn-primary m-2"
-                  onClick={handleShow}
+                  onClick={size < 849 ? handleSmaller : handleShow}
                   style={{ width: "inherit" }}
                 >
-                  Preview my CV
+                  Preview my CV {size < 849 ? <BiLinkExternal /> : ""}
                 </Button>
               </Col>
               <Col className="col-12 col-lg-6  d-flex">
                 <Button
                   id="cvBtn"
                   className="btn btn-success m-2"
-                  onClick={handleShow}
                   style={{ width: "inherit" }}
+                  href={cvPDF}
+                  download
                 >
-                  Download my CV
+                  Download my CV <BiDownload />
                 </Button>
               </Col>
             </Row>
           </Container>
         </Container>
       </Container>
-      <Modal show={show} onHide={handleClose}>
+      <Modal
+        dialogClassName="modal-lg"
+        show={show}
+        onHide={() => setShow(false)}
+        className="d-flex align-items-center justify-content-center"
+      >
         <Modal.Header closeButton>
-          <Modal.Title>Sorry</Modal.Title>
+          <Modal.Title>CV Preview:</Modal.Title>
         </Modal.Header>
-        <Modal.Body>This function is unavailable at the moment</Modal.Body>
+        <Modal.Body>
+          <iframe src={cvPDF} title="prevCV" className="cvFrame"></iframe>
+        </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
