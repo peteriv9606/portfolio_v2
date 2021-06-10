@@ -33,12 +33,16 @@ const DataCol = (props) => {
             </div>
           </Row>
           <Row className="d-flex justify-content-around p-3">
-            <Button href={props.githubLink} className="btn btn-primary">
-              Github
-            </Button>
-            <Button href={props.liveLink} className="btn btn-success">
-              View Live
-            </Button>
+            {props.githubLink && (
+              <Button href={props.githubLink} className="btn btn-primary">
+                Github
+              </Button>
+            )}
+            {props.liveLink && (
+              <Button href={props.liveLink} className="btn btn-success">
+                View Live
+              </Button>
+            )}
           </Row>
         </Container>
       </Col>

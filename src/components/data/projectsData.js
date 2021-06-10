@@ -28,9 +28,16 @@ export const projectsData = [
   {
     id: 3,
     header: "Responsive Webpage Template",
-    description: "A responsive webpage template, made using HTML and CSS only.",
+    description: "A responsive webpage template, made using HTML and CSS only",
     githubLink: "https://github.com/peteriv9606/HTML_CSS_Task1",
     liveLink: "https://pivdesign.netlify.app/",
     imgLink: "../images/2create1.png",
+  },
+  {
+    id: 4,
+    header: "Random Quote Generator",
+    description: "A FreeCodeCamp project made using React",
+    liveLink: "https://pivanov-fcc-random-quote.netlify.app/",
+    imgLink: "../images/fcc-rand-quote.png",
   },
 ];
