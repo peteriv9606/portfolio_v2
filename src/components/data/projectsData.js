@@ -37,6 +37,8 @@ export const projectsData = [
     id: 4,
     header: "Random Quote Generator",
     description: "A FreeCodeCamp project made using React",
+    githubLink:
+      "https://github.com/peteriv9606/fcc-random-quote-machine-react/tree/main/fcc-random-quote-machine",
     liveLink: "https://pivanov-fcc-random-quote.netlify.app/",
     imgLink: "../images/fcc-rand-quote.png",
   },
