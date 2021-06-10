@@ -13,7 +13,7 @@ export const projectsData = [
     header: "Price Listing Demo",
     description: "A price listing, responsive demo webpage, made using Angular",
     githubLink: "https://github.com/peteriv9606/angular-app",
-    liveLink: "https://pivanov-angular-build.netlify.app/",
+    liveLink: "https://pivanov-angular-app.netlify.app/",
     imgLink: "../images/angularProject.png",
   },
   {
