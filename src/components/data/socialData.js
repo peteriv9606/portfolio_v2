@@ -17,6 +17,6 @@ export const socialData = [
   {
     id: 4,
     imgLink: "../../images/whatsapp.png",
-    link: "https://api.whatsapp.com/send?phone=07440409266",
+    link: "https://api.whatsapp.com/send?phone=+359896654019",
   },
 ];
