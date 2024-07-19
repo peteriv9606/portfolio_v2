@@ -1,28 +1,21 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef } from 'react';
 
-import {
-  Container,
-  Row,
-  Col,
-  Form,
-  Button,
-  Modal,
-  Image,
-} from "react-bootstrap";
-import { init } from "emailjs-com";
-import emailjs from "emailjs-com";
-import { socialData } from "./data/socialData";
-import { errTypes } from "./data/errTypes";
+import { Container, Row, Col, Form, Button, Modal, Image, Spinner } from 'react-bootstrap';
+import { socialData } from './data/socialData';
+import { errTypes } from './data/errTypes';
+
+import emailjs from '@emailjs/browser';
+import isEmail from 'sane-email-validation';
 
 function Contact() {
-  const isEmail = require("sane-email-validation");
   var err;
   const el = useRef(null);
-  init("user_z3vb45f04nlIyF48p7OzJ"); //for Email sending
-  const [showModal, setShowModal] = useState(false);
-  const [data, setData] = useState({ name: "", email: "", message: "" });
 
-  const [errMsg, setErrMsg] = useState("errMsg");
+  const [showModal, setShowModal] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [data, setData] = useState({ name: '', email: '', message: '' });
+
+  const [errMsg, setErrMsg] = useState();
 
   const handleType = (e) => {
     const name = e.target.name;
@@ -30,54 +23,51 @@ function Contact() {
     setData({ ...data, [name]: value });
   };
 
-  const handleShow = (e) => {
-    e.preventDefault();
-    setShowModal(true);
-  };
-  const handleClose = (e) => {
-    e.preventDefault();
-    setShowModal(false);
-  };
+  function handleFormError(error) {
+    err = errTypes.filter((msg) => msg.errType === error);
+    setErrMsg(err[0].errMsg);
+    el.current.style.visibility = 'visible';
+    setTimeout(() => (el.current.style.visibility = 'hidden'), 2000);
+  }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
+
     if (data.name && data.email && data.message) {
       //check for empty fields
-      //console.log("No empty fields", data);
+
       //check if data.email is valid email address
       if (isEmail(data.email)) {
         //it is - send email
-        performSubmit(e);
-        setShowModal(true);
-        setData({ name: "", email: "", message: "" });
+
+        try {
+          await emailjs.send(
+            process.env['REACT_APP_EMAIL_SERVICE_ID'],
+            process.env['REACT_APP_EMAIL_TEMPLATE_ID'],
+            data,
+            {
+              publicKey: process.env['REACT_APP_EMAIL_PUBLIC_KEY'],
+            }
+          );
+
+          setShowModal(true);
+          e.target.reset();
+        } catch (error) {
+          alert(error);
+        }
+
+        setData({ name: '', email: '', message: '' });
       } else {
-        //it is not valid email - display error message
-        //console.log("wrong email");
-        err = errTypes.filter((msg) => msg.errType === "WrongEmail");
-        setErrMsg(err[0].errMsg);
-        el.current.style.visibility = "visible";
-        setTimeout(() => (el.current.style.visibility = "hidden"), 2000);
+        handleFormError('WrongEmail');
       }
     } else {
-      //console.log("Has empty fields");
-      err = errTypes.filter((msg) => msg.errType === "EmptyFields");
-      setErrMsg(err[0].errMsg);
-      el.current.style.visibility = "visible";
-      setTimeout(() => (el.current.style.visibility = "hidden"), 2000);
+      handleFormError('EmptyFields');
     }
+
+    setIsLoading(false);
   };
 
-  function performSubmit(e) {
-    e.preventDefault();
-
-    emailjs.sendForm(
-      "service_wxk3frh",
-      "template_xggtre5",
-      e.target,
-      "user_z3vb45f04nlIyF48p7OzJ"
-    );
-    e.target.reset();
-  }
   return (
     <section id="contact" className="text-secondary py-3">
       <Container fluid>
@@ -90,11 +80,7 @@ function Contact() {
         </div>
 
         <Container className="bg-light shadow-lg rounded my-5 p-5 d-flex flex-wrap">
-          <Container
-            fluid
-            className="col-12 col-lg-6  py-5 px-5 "
-            id="contactAndAlt"
-          >
+          <Container fluid className="col-12 col-lg-6  py-5 px-5 " id="contactAndAlt">
             <Row className="d-block text-center text-secondary">
               <div id="subHeader">Drop me an email</div>
             </Row>
@@ -133,41 +119,26 @@ function Contact() {
                   <p id="errMsg" className="m-auto p-1 d-block" ref={el}>
                     {errMsg}
                   </p>
-                  <Button
-                    className="btn btn-success w-100"
-                    type="submit"
-                    onClick={() => handleShow}
-                  >
-                    Send
+
+                  <Button className="btn btn-success w-100" type="submit">
+                    {isLoading ? <Spinner animation="border" size="sm" /> : 'Send'}
                   </Button>
                 </Col>
               </Row>
             </Form>
           </Container>
-          <Container
-            id="contactAndAlt"
-            fluid
-            className="col-12 col-lg-6  py-5 px-5"
-          >
+          <Container id="contactAndAlt" fluid className="col-12 col-lg-6  py-5 px-5">
             <Container fluid className="col-12">
               <Row className="d-block text-center text-secondary">
                 <div id="subHeader">Or use the alternatives</div>
               </Row>
-              <Container
-                fluid
-                className="d-flex flex-wrap justify-content-around"
-              >
+              <Container fluid className="d-flex flex-wrap justify-content-around">
                 {socialData.map((item) => {
                   return (
-                    <a
-                      href={item.link}
-                      key={item.id}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
+                    <a href={item.link} key={item.id} target="_blank" rel="noreferrer">
                       <Image
                         src={item.imgLink}
-                        style={{ width: "40px", cursor: "pointer" }}
+                        style={{ width: '40px', cursor: 'pointer' }}
                         className="m-2 rounded"
                       />
                     </a>
@@ -178,7 +149,7 @@ function Contact() {
           </Container>
         </Container>
       </Container>
-      <Modal show={showModal} onHide={handleClose}>
+      <Modal show={showModal} onHide={() => setShowModal(false)}>
         <Modal.Header closeButton>
           <Modal.Title>Email sent</Modal.Title>
         </Modal.Header>
@@ -186,7 +157,7 @@ function Contact() {
           Thank you for the email, I will get back to you as soon as possible.
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="primary" onClick={handleClose}>
+          <Button variant="primary" onClick={() => setShowModal(false)}>
             Thanks
           </Button>
         </Modal.Footer>
